@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1">
+	<title>Index Page</title>
+	<!-- bootstrap styles -->
+	<link rel="stylesheet" href="../styles/css/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="../styles/css/bootstrap/bootstrap-theme.min.css">
+	<!-- sidr - responive menu -->
+	<link rel="stylesheet" href="../styles/css/sidr/jquery.sidr.dark.css">
+	<!-- custom styles -->
+	<link rel="stylesheet" href="../styles/css/application.css">
+
+	<!-- google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Croissant+One|PT+Sans" rel="stylesheet">
+
+	<!-- font-awesome -->
+	<script src="https://use.fontawesome.com/7f95b8e67a.js"></script>
+
+</head>
+<body>
+
+	<div id="main">
+		<div id="main-container">
+			<!-- title header -->
+			<div id="header">
+
+				<!-- logout -->
+				<div id="logout-button">
+					<a href="#logout"><span title="Logout"><i class="fa fa-sign-out" aria-hidden="true"></i></span></a>
+				</div>
+				<!-- logout -->
+				
+				<!-- login -->
+				<div id="login-button">
+					<a href="#login"><span title="Login"><i class="fa fa-sign-in" aria-hidden="true"></i></span></a>
+				</div>
+				<!-- login -->
+
+				<!-- my account -->
+				<div id="my-account">
+					<a href="#myAccount" title="My Account"><i class="fa fa-user" aria-hidden="true"></i></a>
+				</div>
+				<!-- my account -->
+
+				
+
+				<div class="row">
+					<div id="assorted-colors">
+						<div class="assorted-colors assorted-light"></div>
+						<div class="assorted-colors assorted-md-light"></div>
+						<div class="assorted-colors assorted-md-dark"></div>
+						<div class="assorted-colors assorted-dark"></div>
+						<div class="assorted-colors assorted-long"></div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="title-text">
+						<img class="healing-leaves" src="../img/leaves.png" alt="Healing Leaves">
+						<span>Natural Healing Reviews</span>
+					</div>
+				</div>
+			</div>
+			<!-- title header -->
+
+			<!-- navigation -->
+			<div class="row desktop-nav">
+				<nav>
+					<ul class="nav nav-tabs nav-justified">
+						<li><a class="active-tab" href="#">Home</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Find Conditions</a></li>
+						<li><a href="#">Submit Treatment</a></li>
+						<li><a href="#">Submit Condition</a></li>
+					</ul>
+				</nav>
+			</div>
+			<!-- navigation -->
+			
+
+
+			<!-- mobile nav -->
+			<div class="mobile-nav mobile-nav-btn">
+				<a id="simple-menu" href="#sidr"><span><i class="fa fa-bars" aria-hidden="true"></i></span></a>
+			</div>
+			<div id="sidr" class="mobile-nav">
+				<ul>
+					<li><a class="active-tab" href="#">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Find Conditions</a></li>
+					<li><a href="#">Submit Treatment</a></li>
+					<li><a href="#">Submit Condition</a></li>
+				</ul>
+			</div>
+			<!-- mobile nav -->
+
+			<!-- content -->
+			<div id="content">
+				<h1 class="centered">Create a New Account</h1>
+					
+				<div class="row">
+					<div class="col-md-2 col-md-offset-5">
+						<div class="form-group">
+							<h3 class="centered">Select Type of Account</h3>
+							<select class="form-control" name="selectType" id="">
+								<option value="">Select Type</option>
+								<option value="">Doctor</option>
+								<option value="">General User</option>
+							</select>
+						</div>
+					</div>
+				</div>		
+		
+
+				<!-- doctor signup -->
+				<div id="doctor-signup" class="margin-top">
+					<h4 class="centered">Create New Doctor Account</h4>					
+					<form action="">
+						<div class="margin-top">
+							<div class="row">	
+								<div class="col-md-2 col-md-offset-4">
+									<div class="form-group">
+										<label for="">First Name</label>
+										<input class="form-control" type="text" placeholder="First Name">
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="form-group">
+										<label for="">Last Name</label>
+										<input class="form-control" type="text" placeholder="Last Name">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">	
+							<div class="col-md-2 col-md-offset-4">
+								<div class="form-group">
+									<label for="">User Name</label>
+									<input class="form-control" type="text" placeholder="User Name">
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-group">
+									<label for="">Email</label>
+									<input class="form-control" type="email" placeholder="Email">
+								</div>
+							</div>
+						</div>
+						<div class="row">	
+							<div class="col-md-2 col-md-offset-4">
+								<div class="form-group">
+									<label for="">Type of Practitioner</label>
+									<input class="form-control" type="text" placeholder="Practitioner Type">
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-group">
+									<label for="">License Number</label>
+									<input class="form-control" type="text" placeholder="License Number">
+								</div>
+							</div>
+						</div>
+						<div class="row">	
+							<div class="col-md-2 col-md-offset-4">
+								<div class="form-group">
+									<label for="">Password</label>
+									<input class="form-control" type="password" placeholder="Password">
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-group">
+									<label for="">Re-enter Password</label>
+									<input class="form-control" type="password" placeholder="Re-enter Password">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2 col-md-offset-5 margin-top">
+								<input type="submit" class="form-control styled-button" value="Submit" name="submit-doctor">
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- doctor signup -->
+				
+				<!-- genearl user signup -->
+				<div id="general-user-signup" class="margin-top">
+					<h4 class="centered">Create New General User Account</h4>
+					<form action="">
+						<div class="margin-top">
+							<div class="row">	
+								<div class="col-md-2 col-md-offset-5">
+									<div class="form-group">
+										<label for="">Username</label>
+										<input class="form-control" type="text" placeholder="Username">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-2 col-md-offset-5">
+									<div class="form-group">
+										<label for="">Email</label>
+										<input class="form-control" type="email" placeholder="Email">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-2 col-md-offset-5">
+									<div class="form-group">
+										<label for="">Password</label>
+										<input class="form-control" type="password" placeholder="Password">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-2 col-md-offset-5">
+									<div class="form-group">
+										<label for="">Re-enter Password</label>
+										<input class="form-control" type="text" placeholder="Re-enter Password">
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-2 col-md-offset-5 margin-top">
+									<input type="submit" class="form-control styled-button" value="Submit" name="submit-general-user">
+								</div>
+							</div>
+
+						</div>
+					</form>
+				</div>
+				<!-- general user signup -->
+
+
+				
+				
+
+			</div>
+			<!-- content -->
+
+
+		</div>
+
+	</div>
+	<!-- end main -->
+
+
+
+<!-- *************Scripts************* -->	
+<!-- jquery -->
+<script src="../js/jquery/jquery-3.1.1.min.js"></script>
+<!-- sidr - reponsive menu-->
+<script src="../js/sidr/jquery.sidr.min.js"></script>
+<!-- bootstrap -->
+<script src="../js/bootstrap/bootstrap.min.js"></script>
+<!-- Custom Scripts -->
+<script src="../js/custom-global.js"></script>
+
+
+
+
+</body>
+</html>
