@@ -1,14 +1,70 @@
-const mongoose = require('mongoose');
-const Schema   = mongoose.Schema;
-const bcrypt = require('bcrypt-nodejs');
+const mongoose  = require('mongoose');
+const bcrypt    = require('bcrypt-nodejs');
+const validator = require('validator');
+const Schema    = mongoose.Schema;
 
+
+
+/*
+	Validation functions
+ */
+function validateEmail( email ) {
+	return validator.isEmail( email );
+}
+
+
+/*
+	Validate Password
+ */
+function validatePassword( password ) {
+	return !validator.isAlpha(password) && validator.isLength(password, {min: 6, max: 40}) && !validator.isNumeric(password);
+}
+
+/*
+	Validate username
+ */
+function validateUsername( username ) {
+	return !validator.isEmpty(username);
+}
+
+
+/*
+	Schema
+ */
 
 // Define our model
 const userSchema = new Schema({
 	//email must be unique and make sure it is lowercase
-	email: { type: String, unique: true, lowercase: true },
-	password: String,
-	usersecret: String 
+	email: { 
+		type: String, 
+		unique: true, 
+		lowercase: true, 
+		trim: true, 
+		validate: {
+			validator: validateEmail,
+			message: 'Must be a valid email address.'
+		} 
+	},
+	password: {
+		type: String
+		// validate: {
+		// 	validator: validatePassword,
+		// 	message: 'Password must have 6 characters and contain numbers and letters.'
+		// }
+	},
+	username: {
+		type: String,
+		unique: true, 
+		validate: {
+			validator: validateUsername,
+			message: 'Username must not be blank.'
+		}
+	},
+	usersecret: String,
+	date_created: {type: Date, default: Date.now},
+	is_verified: { type: Boolean, default: false },
+	is_active: {type: Boolean, default: false},
+	failed_attempts: {type: Number, default: 0}
 });
 
 //On Save hook, encrypt password
