@@ -2,8 +2,8 @@
 	Emailer class - used to send confirmation emails and any other emails within the application. 
  */
 
-const MAILGUN_KEY    = require('../config').MAILGUN_KEY;
-const MAILGUN_DOMAIN = require('../config').MAILGUN_DOMAIN;
+const MAILGUN_KEY    = require('../config/config').MAILGUN_KEY;
+const MAILGUN_DOMAIN = require('../config/config').MAILGUN_DOMAIN;
 const mailgun        = require('mailgun-js')({apiKey: MAILGUN_KEY, domain: MAILGUN_DOMAIN});
 
 

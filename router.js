@@ -41,6 +41,6 @@ module.exports = function(app) {
 	 */
 	//create a treatment
 	app.post('/treatment', requireAuth, treatment.create);
-	
+	app.get('/treatments/:id', treatment.getTreatment);
 
 }

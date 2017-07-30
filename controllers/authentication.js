@@ -1,6 +1,6 @@
 const User            = require('../models/user');
 const jwt             = require('jsonwebtoken');
-const config          = require('../config');
+const config          = require('../config/config');
 const randtoken       = require('rand-token');
 const validator       = require('validator');
 const Email           = require('../services/email');
@@ -99,7 +99,6 @@ exports.signup = function(req, res, next) {
 exports.signin = function(req, res, next) {
 	
 
-	console.log( "hello" );
 
 	//user has already had their email and password auth'd - just need a token
 	if( req.user ) {
@@ -133,3 +132,6 @@ exports.verify = function(req, res, next) {
 
 	});
 };
+
+
+

@@ -9,12 +9,14 @@ const router     = require('./router');
 const mongoose   = require('mongoose');
 const cors       = require('cors');
 var flash        = require('connect-flash');
+const config 	 = require('./config/config');
 
 
 /*
 	DB Setup
  */
-mongoose.connect('mongodb://localhost:auth/natural_healing');
+mongoose.Promise = global.Promise;
+mongoose.connect(config.MONGO_URI);
 
 
 const app = express();
@@ -43,3 +45,5 @@ const server = http.createServer(app);
 server.listen(port);
 
 console.log( 'Server started on ', port );
+
+module.exports = {app};

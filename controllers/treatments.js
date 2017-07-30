@@ -67,7 +67,49 @@ exports.create =  (req, res, next) => {
 			return res.status(200).json({success: true});
 		});
 	});
+};
 
+
+
+exports.getTreatment = (req, res, next) => {
+	var { id } = req.params;
+
+	if( !id ) {
+		return res.status(422).json({error: "No condition ID provided."});
+	}
+
+	/*
+		Check to make sure condition doesn't already exist
+	 */
+	Treatment.findOne({_id: id},(err, treatment) => {
+		if( !treatment ) {
+			return res.status(422).json({error: "Could not find the specified treatment"});
+		}
+		//if error connecting to database - return error
+		if(err) {return res.status(422).json({error: 'Error - Please try again later.'})};
+
+		var treatmentResponse = {
+			cost: treatment.cost,
+			description: treatment.description,
+			name: treatment.name,
+			precautions: treatment.precautions,
+			treatmentComponents: treatment.treatmentComponents.map((component) => {
+				return {
+					brandName: component.brandName,
+					cost: component.cost,
+					name: component.name,
+					notes: component.notes, 
+					id: component._id,
+					dosage: component.dosage
+				};
+			})
+		}; 
+
+		//If a user with an email does exist, return an error
+		if(treatment) {
+			return res.status(200).json({treatment: treatmentResponse});
+		}
+	});
 
 
 };

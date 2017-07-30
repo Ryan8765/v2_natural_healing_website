@@ -13,7 +13,6 @@ const conditionSchema = new Schema ({
 	condition: {
 		type: String,
 		unique: true,
-		lowercase: true,
 		trim: true
 	},
 	description: {
