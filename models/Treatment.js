@@ -33,7 +33,7 @@ const treatmentSchema = new Schema ({
 		default: Date.now
 	},
 	relatedCondition: {
-		type: String,
+		type: Schema.Types.ObjectId,
 		required: true
 	},
 	cost: {

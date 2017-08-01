@@ -1,5 +1,6 @@
 const Condition = require('../models/Condition');
 const Treatment = require('../models/Treatment');
+const mongoose  = require('mongoose');
 
 /**
  * 	Functionality for CRUD conditions model
@@ -63,12 +64,31 @@ exports.getAll =  ( req, res, next ) => {
 
 exports.getTreatments = ( req, res, next ) => {
 	var { conditionID } = req.params;
-	console.log( "condition " + conditionID );
+	//when searching via aggregate - must turn ID into an objectid for some reason. 
+	conditionID = mongoose.Types.ObjectId(conditionID);
 
-	var query = Treatment.find({is_verified: true, relatedCondition: conditionID });
-
-	query.exec((err, treatments) => {
+	Condition.aggregate([
+		{ $project : { condition : 1 } },
+    	{
+		    $lookup:
+		        {
+			        from: "treatments",
+			        localField: "_id",
+			        foreignField: "relatedCondition",
+		          	as: "treatments"
+		        },
+	   },
+	   { $match : { _id: conditionID } }
+	], (err, result) => {
 		if(err) return next(err);
-		res.status(200).json(treatments);
+		res.status(200).json(result[0]);
 	});
+
+
+	// var query = Treatment.find({is_verified: true, relatedCondition: conditionID });
+
+	// query.exec((err, treatments) => {
+	// 	if(err) return next(err);
+	// 	res.status(200).json(treatments);
+	// });
 };

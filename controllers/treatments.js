@@ -1,4 +1,5 @@
 const Treatment = require('../models/Treatment');
+const mongoose  = require('mongoose');
 
 
 exports.create =  (req, res, next) => {
@@ -56,7 +57,7 @@ exports.create =  (req, res, next) => {
 			treatmentComponents,
 			precautions,
 			cost: treatmentCost,
-			relatedCondition: conditionID
+			relatedCondition: mongoose.Types.ObjectId(conditionID)
 		});
 
 		
