@@ -3,6 +3,7 @@ const passportService = require('./services/passport');
 const passport        = require('passport');
 const condition       = require('./controllers/conditions');
 const treatment       = require('./controllers/treatments');
+const comment         = require('./controllers/comments');
 
 //require authorization using passport.  jwt auth and make sure we don't want a session. This will be used as a middleware.
 const requireAuth = passport.authenticate('jwt', {session: false});
@@ -42,5 +43,14 @@ module.exports = function(app) {
 	//create a treatment
 	app.post('/treatment', requireAuth, treatment.create);
 	app.get('/treatments/:id', treatment.getTreatment);
+
+
+	/*
+		Comments
+	 */
+	app.post('/comment', requireAuth, comment.create);
+	
+	
+
 
 }

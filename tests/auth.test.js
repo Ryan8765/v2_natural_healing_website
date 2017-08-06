@@ -135,6 +135,10 @@ describe('DELETE /conditions/:id', () => {
 		setTimeout(function(){ done(); }, 400);
 	});
 
+	it('Should return 400 - not a valid condition.', (done) => {
+		setTimeout(function(){ done(); }, 400);
+	});
+
 	it('Should return 401 unauthorized - invalid jwt token.', (done) => {
 		setTimeout(function(){ done(); }, 400);
 	});
@@ -142,6 +146,24 @@ describe('DELETE /conditions/:id', () => {
 
 describe('PATCH /conditions/:id', () => {
 	it('Should update existing conditions.', (done) => {
+		setTimeout(function(){ done(); }, 400);
+	});
+
+	it('Should return 400 - not a valid condition.', (done) => {
+		setTimeout(function(){ done(); }, 400);
+	});
+
+	it('Should return 401 unauthorized - invalid jwt token.', (done) => {
+		setTimeout(function(){ done(); }, 400);
+	});
+});
+
+describe('PUT /conditions/:id', () => {
+	it('Should replace existing condition', (done) => {
+		setTimeout(function(){ done(); }, 400);
+	});
+
+	it('Should return 400 - not a valid condition.', (done) => {
 		setTimeout(function(){ done(); }, 400);
 	});
 
@@ -164,6 +186,10 @@ describe('POST /treatments/:id/treatment', () => {
 		setTimeout(function(){ done(); }, 400);
 	});
 
+	it('Should return 400 - not a valid treatment.', (done) => {
+		setTimeout(function(){ done(); }, 400);
+	});
+
 	it('Should return 401 unauthorized - invalid jwt token.', (done) => {
 		setTimeout(function(){ done(); }, 400);
 	});
@@ -172,6 +198,14 @@ describe('POST /treatments/:id/treatment', () => {
 //delete treatment
 describe('DELETE /conditions/:id/treatment/:id', () => {
 	it('Should delete existing condition.', (done) => {
+		setTimeout(function(){ done(); }, 400);
+	});
+
+	it('Should return 400 - not a valid condition.', (done) => {
+		setTimeout(function(){ done(); }, 400);
+	});
+
+	it('Should return 400 - not a valid treatment.', (done) => {
 		setTimeout(function(){ done(); }, 400);
 	});
 
@@ -190,12 +224,34 @@ describe('PATCH /conditions/:id/treatment/:id', () => {
 	});
 });
 
+describe('PATCH /conditions/:id/treatment/:id', () => {
+	it('Should update replace treatment.', (done) => {
+		setTimeout(function(){ done(); }, 400);
+	});
+
+	it('Should return 400 - invalid treatment', (done) => {
+		setTimeout(function(){ done(); }, 400);
+	});
+
+	it('Should return 400 - invalid condition', (done) => {
+		setTimeout(function(){ done(); }, 400);
+	});
+
+	it('Should return 401 unauthorized - invalid jwt token.', (done) => {
+		setTimeout(function(){ done(); }, 400);
+	});
+});
+
 
 /*
 	User
  */
 describe('DELETE /users/:id', () => {
 	it('Should delete existing user.', (done) => {
+		setTimeout(function(){ done(); }, 400);
+	});
+
+	it('Should return 400 - not a valid existing user.', (done) => {
 		setTimeout(function(){ done(); }, 400);
 	});
 
@@ -225,6 +281,29 @@ describe('POST /passreset/:userid', () => {
 	});
 
 	it('Should update existing user password.', (done) => {
+		setTimeout(function(){ done(); }, 400);
+	});
+
+	it('Should return 401 unauthorized - invalid user id.', (done) => {
+		setTimeout(function(){ done(); }, 400);
+	});
+});
+
+
+
+/*
+	Comment
+ */
+describe('POST /comment', () => {
+	it('Should create a new comment.', (done) => {
+		setTimeout(function(){ done(); }, 400);
+	});
+
+	it('Should return 400 error - not a valid treatment.', (done) => {
+		setTimeout(function(){ done(); }, 400);
+	});
+
+	it('Should return 400 - comment is required.', (done) => {
 		setTimeout(function(){ done(); }, 400);
 	});
 

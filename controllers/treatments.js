@@ -94,6 +94,7 @@ exports.getTreatment = (req, res, next) => {
 			description: treatment.description,
 			name: treatment.name,
 			precautions: treatment.precautions,
+			comments: treatment.comments,
 			treatmentComponents: treatment.treatmentComponents.map((component) => {
 				return {
 					brandName: component.brandName,

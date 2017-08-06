@@ -1,4 +1,5 @@
 const TreatmentComponent = require('./schema/TreatmentComponent');
+const Comment            = require('./schema/Comment');
 const mongoose           = require('mongoose');
 const validator          = require('validator');
 const Schema             = mongoose.Schema;
@@ -45,6 +46,8 @@ const treatmentSchema = new Schema ({
 	},
 	//Array of treatment components.  Schema for this is contained in ./schema/TreatmentComponent.js
 	treatmentComponents: [TreatmentComponent],
+	//array of comment components.
+	comments: [Comment],
 	is_verified: {
 		type: Boolean,
 		default: false
