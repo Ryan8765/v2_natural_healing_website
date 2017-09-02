@@ -2,6 +2,8 @@
 	This is a comment schema.  This is contained within a treatment (basically a related treatment component)
  */
 const mongoose = require('mongoose');
+const Like  = require('./Like');
+
 
 const Schema = mongoose.Schema;
 
@@ -21,7 +23,8 @@ const CommentSchema = new Schema ({
 	date_created: {
 		type: Date, 
 		default: Date.now
-	}
+	},
+	likes: [Like]
 });
 
 

@@ -1,5 +1,6 @@
 const Treatment = require('../models/Treatment');
 const mongoose  = require('mongoose');
+const Ratings = require('../helpers/Ratings');
 
 
 exports.create =  (req, res, next) => {
@@ -89,12 +90,22 @@ exports.getTreatment = (req, res, next) => {
 		//if error connecting to database - return error
 		if(err) {return res.status(422).json({error: 'Error - Please try again later.'})};
 
+		var ratings = treatment.ratings;
+
+		//get ratings average
+		var currentRatings = new Ratings(ratings);
+		var ratingsAverage = currentRatings.getAverage();
+		var numRatings     = currentRatings.getNumberRatings();
+
 		var treatmentResponse = {
 			cost: treatment.cost,
 			description: treatment.description,
 			name: treatment.name,
 			precautions: treatment.precautions,
 			comments: treatment.comments,
+			ratings,
+			ratingsAverage,
+			numRatings,
 			treatmentComponents: treatment.treatmentComponents.map((component) => {
 				return {
 					brandName: component.brandName,

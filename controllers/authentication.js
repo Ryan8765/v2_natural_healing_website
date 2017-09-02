@@ -99,10 +99,9 @@ exports.signup = function(req, res, next) {
 exports.signin = function(req, res, next) {
 	
 
-
 	//user has already had their email and password auth'd - just need a token
 	if( req.user ) {
-		res.send({token: generateToken(req.user)});
+		res.send({token: generateToken(req.user), userID: req.user._id});
 	} else {
 		// res.send({error: 'Check your email or password.'})
 	}

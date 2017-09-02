@@ -1,16 +1,12 @@
 const TreatmentComponent = require('./schema/TreatmentComponent');
 const Comment            = require('./schema/Comment');
+const Rating            = require('./schema/Rating');
 const mongoose           = require('mongoose');
 const validator          = require('validator');
 const Schema             = mongoose.Schema;
 
 
-/*
-	Used to force a null setting on rating before saved to database
- */
-function setInitialRating (value) {
-	return null;
-}
+
 
 
 /*
@@ -40,14 +36,12 @@ const treatmentSchema = new Schema ({
 	cost: {
 		type: Number
 	},
-	rating: {
-		type: Number,
-		set: setInitialRating
-	},
 	//Array of treatment components.  Schema for this is contained in ./schema/TreatmentComponent.js
 	treatmentComponents: [TreatmentComponent],
 	//array of comment components.
 	comments: [Comment],
+	//Rating
+	ratings: [Rating],
 	is_verified: {
 		type: Boolean,
 		default: false
