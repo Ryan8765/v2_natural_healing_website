@@ -4,6 +4,7 @@ const Rating            = require('./schema/Rating');
 const mongoose           = require('mongoose');
 const validator          = require('validator');
 const Schema             = mongoose.Schema;
+const roundTo            = require('round-to');
 
 
 
@@ -48,6 +49,37 @@ const treatmentSchema = new Schema ({
 	}
 
 });
+
+//in order for the queries to return virtuals, you must set virtual options to return on the schema for JSON and for objects.
+treatmentSchema.set('toObject', {virtuals: true});
+treatmentSchema.set('toJSON', {virtuals: true});
+
+/*
+	Set a virtual property to add all ratings.
+ */
+treatmentSchema.virtual('averageRating').get(function () {
+	// return this.ratings.length;
+	var ratings = this.ratings;
+	var length  = ratings.length;
+
+	if( length > 0 ) {
+		var ratingAverage = ratings.reduce((sum, inidividualRating) => {
+			return sum + inidividualRating.rating;
+		}, 0) / length;
+		ratingAverage = roundTo(ratingAverage, 2);
+		return ratingAverage;
+	} else {
+		return;
+	}
+
+});
+
+treatmentSchema.virtual('numRatings').get(function () {
+
+	return this.ratings.length;
+
+});
+
 
 
 

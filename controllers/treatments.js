@@ -92,10 +92,7 @@ exports.getTreatment = (req, res, next) => {
 
 		var ratings = treatment.ratings;
 
-		//get ratings average
-		var currentRatings = new Ratings(ratings);
-		var ratingsAverage = currentRatings.getAverage();
-		var numRatings     = currentRatings.getNumberRatings();
+	
 
 		var treatmentResponse = {
 			cost: treatment.cost,
@@ -104,8 +101,8 @@ exports.getTreatment = (req, res, next) => {
 			precautions: treatment.precautions,
 			comments: treatment.comments,
 			ratings,
-			ratingsAverage,
-			numRatings,
+			ratingsAverage: treatment.averageRating,
+			numRatings: treatment.numRatings,
 			treatmentComponents: treatment.treatmentComponents.map((component) => {
 				return {
 					brandName: component.brandName,

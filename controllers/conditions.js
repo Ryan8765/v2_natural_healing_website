@@ -1,6 +1,7 @@
 const Condition = require('../models/Condition');
 const Treatment = require('../models/Treatment');
 const mongoose  = require('mongoose');
+const Ratings   = require('../helpers/Ratings');
 
 /**
  * 	Functionality for CRUD conditions model
@@ -64,7 +65,7 @@ exports.getAll =  ( req, res, next ) => {
 
 exports.getTreatments = ( req, res, next ) => {
 	var { conditionID } = req.params;
-	//when searching via aggregate - must turn ID into an objectid for some reason. 
+	//when searching via aggregate - must turn ID into an objectid. 
 	conditionID = mongoose.Types.ObjectId(conditionID);
 
 	Condition.aggregate([
@@ -80,15 +81,19 @@ exports.getTreatments = ( req, res, next ) => {
 	   },
 	   { $match : { _id: conditionID } }
 	], (err, result) => {
+
 		if(err) return next(err);
+
+		//get the average for each treatment.  Place for possible improvement in the future.  Save time by getting MongoDB to do the calcs. 
+		var treatments = result[0].treatments.map((treatment) => {
+			var rating = new Ratings( treatment.ratings );
+			rating = rating.getAverage();
+			treatment.rating = rating;
+			return treatment;
+		});
+
+		result[0].treatments = treatments;
+
 		res.status(200).json(result[0]);
 	});
-
-
-	// var query = Treatment.find({is_verified: true, relatedCondition: conditionID });
-
-	// query.exec((err, treatments) => {
-	// 	if(err) return next(err);
-	// 	res.status(200).json(treatments);
-	// });
 };

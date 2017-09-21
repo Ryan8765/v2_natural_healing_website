@@ -14,7 +14,7 @@ exports.create =  (req, res, next) => {
 
 	if( rating === undefined ) return res.status(422).send({error: 'Not a valid rating.'});
 
-	if( !(ratingIsNumeric && rating <= 10 && rating >= 0) ) {
+	if( !(ratingIsNumeric && rating <= 10 && rating >= -1) ) {
 		return res.status(422).send({error: 'Not a valid number.  Must be a rating between 0 and 10.'});
 	}
 
@@ -41,16 +41,33 @@ exports.create =  (req, res, next) => {
 		//if there is an existing rating by this user - update that, else create new ratting
 		if( existingRating.length > 0 ) {
 			var userRating = existingTreatment.ratings.id( existingRating[0]._id );
-			userRating.rating = rating;
-			existingTreatment.save((err) => {
-				//if error connecting to database - return error
-				if(err) {return next(err);}
-				return res.status(200).json({
-					success: true,
-					ratingsAverage: currentRatings.getAverage(),
-					numRatings: currentRatings.getNumberRatings()
+
+
+			//if user is trying to clear their rating with a null value (-1) - remove the users rating from the treatment
+			if( rating === -1 ) {
+				userRating.remove();
+				existingTreatment.save((err) => {
+					//if error connecting to database - return error
+					if(err) {return next(err);}
+					return res.status(200).json({
+						success: true,
+						ratingsAverage: currentRatings.getAverage(),
+						numRatings: currentRatings.getNumberRatings()
+					});
 				});
-			});
+			} else {
+				//if user changed their rating to a valid rating 0-10 - update the rating.
+				userRating.rating = rating;
+				existingTreatment.save((err) => {
+					//if error connecting to database - return error
+					if(err) {return next(err);}
+					return res.status(200).json({
+						success: true,
+						ratingsAverage: currentRatings.getAverage(),
+						numRatings: currentRatings.getNumberRatings()
+					});
+				});
+			}			
 		} else {
 
 			existingTreatment.ratings.push({
