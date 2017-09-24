@@ -9,7 +9,7 @@ if( env === 'development' ) {
 	var config = require('./config.json');
 	configOut = config[env]; 
 } else if ( env === 'production' ) {
-	configOut = require('.config_prod.js');
+	configOut = require('./config_prod.js');
 }
 
 
