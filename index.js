@@ -16,7 +16,8 @@ const config 	 = require('./config/config');
 	DB Setup
  */
 mongoose.Promise = global.Promise;
-mongoose.connect(config.MONGO_URI);
+//if on Heroku - use the MONGODB_URI global - else use config URI for local instance.
+mongoose.connect(process.env.MONGODB_URI || config.MONGO_URI);
 
 
 const app = express();
