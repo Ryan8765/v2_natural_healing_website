@@ -6,3 +6,5 @@
 ::1 - - [24/Sep/2017:20:38:53 +0000] "GET /conditions HTTP/1.1" 304 - "http://localhost:3000/conditions" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"
 ::1 - - [24/Sep/2017:20:38:54 +0000] "GET /condition/597fca1bd8e5655d300954a7/treatments HTTP/1.1" 304 - "http://localhost:3000/condition/597fca1bd8e5655d300954a7/treatments" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"
 ::1 - - [24/Sep/2017:20:38:55 +0000] "GET /treatments/597fcacbd8e5655d300954aa HTTP/1.1" 304 - "http://localhost:3000/treatment/597fcacbd8e5655d300954aa" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"
+::1 - - [25/Sep/2017:22:24:18 +0000] "POST /signin HTTP/1.1" 200 280 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"
+::1 - - [25/Sep/2017:22:24:53 +0000] "GET /conditions HTTP/1.1" 200 296 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"

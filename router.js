@@ -23,7 +23,7 @@ module.exports = function(app) {
 	 */
 	app.post('/signin', requireSignin, Authentication.signin);
 	app.post('/signup/:accountType', Authentication.signup);
-	app.post('/verify/:secret/:email', Authentication.verify);
+	app.get('/verify/:secret/:email', Authentication.verify);
 
 
 	/*
