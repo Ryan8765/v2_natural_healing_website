@@ -90,7 +90,7 @@ exports.signup = function(req, res, next) {
 
 			//Respond to request indicating the user was created with a user token.  
 			//res.json({token: generateToken(user)});
-			res.status(200).json({success: true});
+			res.status(200).json({success: true, client: config.BASE_URL_CLIENT});
 		});
 	});
 };
