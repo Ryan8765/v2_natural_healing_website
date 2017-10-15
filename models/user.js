@@ -1,5 +1,5 @@
-const mongoose  = require('mongoose');
 const bcrypt    = require('bcrypt-nodejs');
+const mongoose  = require('mongoose');
 const validator = require('validator');
 const Schema    = mongoose.Schema;
 
@@ -35,15 +35,15 @@ function validateUsername( username ) {
 // Define our model
 const userSchema = new Schema({
 	//email must be unique and make sure it is lowercase
-	email: { 
-		type: String, 
-		unique: true, 
-		lowercase: true, 
-		trim: true, 
+	email: {
+		type: String,
+		unique: true,
+		lowercase: true,
+		trim: true,
 		validate: {
 			validator: validateEmail,
 			message: 'Must be a valid email address.'
-		} 
+		}
 	},
 	password: {
 		type: String
@@ -52,9 +52,13 @@ const userSchema = new Schema({
 		// 	message: 'Password must have 6 characters and contain numbers and letters.'
 		// }
 	},
+	//used in URL when a user needs to reset their password
+	passwordResetToken: {
+		type: String
+	},
 	username: {
 		type: String,
-		unique: true, 
+		unique: true,
 		validate: {
 			validator: validateUsername,
 			message: 'Username must not be blank.'

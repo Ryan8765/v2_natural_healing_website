@@ -4,7 +4,7 @@ const passport        = require('passport');
 const condition       = require('./controllers/conditions');
 const treatment       = require('./controllers/treatments');
 const comment         = require('./controllers/comments');
-const rating         = require('./controllers/ratings');
+const rating          = require('./controllers/ratings');
 
 
 //require authorization using passport.  jwt auth and make sure we don't want a session. This will be used as a middleware.
@@ -24,6 +24,10 @@ module.exports = function(app) {
 	app.post('/signin', requireSignin, Authentication.signin);
 	app.post('/signup/:accountType', Authentication.signup);
 	app.post('/verify/:secret/:email', Authentication.verify);
+	//url to reset password
+	app.post('/reset', Authentication.reset);
+	//sends request to email for password reset for a user
+	app.post('/sendPasswordReset', Authentication.sendPasswordReset);
 
 
 	/*
@@ -45,7 +49,7 @@ module.exports = function(app) {
 	//create a treatment
 	app.post('/treatment', requireAuth, treatment.create);
 	app.get('/treatments/:id', treatment.getTreatment);
-	
+
 
 	/*
 		Ratings - treatments
@@ -61,7 +65,6 @@ module.exports = function(app) {
 	app.delete('/comment', requireAuth, comment.delete);
 	app.post('/like', requireAuth, comment.createLike);
 
-	
 
 
 }
